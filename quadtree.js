@@ -1,8 +1,9 @@
 class Point {
-    constructor(x, y, label = '') {
+    constructor(x, y, label = '', index = -1) {
         this.x = x;
         this.y = y;
         this.label = label;
+        this.index = index;
     }
 }
 
@@ -89,20 +90,102 @@ class QuadTree {
         //render x, y in new frame.
         push();
         rectMode(CENTER);
-        stroke(80);
+        stroke(55);
         noFill();
         strokeWeight(1);
         rect(this.boundary.x, this.boundary.y, this.boundary.w * 2, this.boundary.h * 2);
 
         // Render points stored at this node
         for (const p of this.points) {
+            // Draw the point
             stroke(255);
-            strokeWeight(4);
-            point(p.x, p.y);
-            noStroke();
-            fill(220);
-            textSize(10);
-            text(p.label || '', p.x + 6, p.y - 4);
+            noStroke()
+            //strokeWeight(4);
+            //point(p.x, p.y);
+            
+            // Calculate quadrant boundaries
+            const quadLeft = this.boundary.x - this.boundary.w;
+            const quadRight = this.boundary.x + this.boundary.w;
+            const quadTop = this.boundary.y - this.boundary.h;
+            const quadBottom = this.boundary.y + this.boundary.h;
+            const quadWidth = this.boundary.w * 2;
+            const quadHeight = this.boundary.h * 2;
+            
+            // Draw text that fills the quadrant with wrapping
+            if (p.label) {
+                noStroke();
+                fill(200);
+                
+                // Start with larger font size to fill space better
+                let fontSize = Math.min(quadWidth, quadHeight) * 0.4;
+                const padding = 4;
+                const maxWidth = quadWidth - padding * 2;
+                const maxHeight = quadHeight - padding * 2;
+                
+                // Function to wrap text into lines
+                const wrapText = (txt, maxW, size) => {
+                    textSize(size);
+                    const words = txt.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    
+                    for (const word of words) {
+                        const testLine = currentLine + (currentLine ? ' ' : '') + word;
+                        const testWidth = textWidth(testLine);
+                        
+                        if (testWidth > maxW && currentLine) {
+                            lines.push(currentLine);
+                            currentLine = word;
+                        } else {
+                            currentLine = testLine;
+                        }
+                    }
+                    if (currentLine) lines.push(currentLine);
+                    return lines;
+                };
+                
+                // Find optimal font size that fills the box
+                let lines = [];
+                let lineHeight = 0;
+                let totalHeight = 0;
+                
+                while (fontSize > 2) {
+                    textSize(fontSize);
+                    lines = wrapText(p.label, maxWidth, fontSize);
+                    lineHeight = fontSize * 1.2;
+                    totalHeight = lines.length * lineHeight;
+                    
+                    // Check if text fits within bounds
+                    if (totalHeight <= maxHeight) {
+                        // Check if all lines fit width-wise
+                        const allFit = lines.every(line => textWidth(line) <= maxWidth);
+                        if (allFit) break;
+                    }
+                    fontSize *= 0.95;
+                }
+                
+                // Adjust line spacing for specific indices to fill vertical space
+                const fillVerticalIndices = [1, 2, 5, 7, 8, 11, 12, 13];
+                if (fillVerticalIndices.includes(p.index) && lines.length > 1) {
+                    // Calculate spacing to fill the entire vertical height
+                    const textBlockHeight = lines.length * fontSize;
+                    const availableSpace = maxHeight - textBlockHeight;
+                    lineHeight = fontSize + (availableSpace / (lines.length - 1));
+                }
+                
+                // Draw wrapped text, left-aligned
+                textAlign(LEFT, TOP);
+                textSize(fontSize);
+                const x = quadLeft + padding;
+                let y = quadTop + padding;
+                
+                for (const line of lines) {
+                    text(line, x, y);
+                    y += lineHeight;
+                }
+                
+                textAlign(LEFT, BASELINE); // Reset to default
+            }
         }
 
         if (this.divided){
@@ -112,5 +195,39 @@ class QuadTree {
             this.southeast.show();
         }
         pop();
+    }
+
+    // Collect all points from the tree
+    getAllPoints() {
+        let result = [...this.points];
+        if (this.divided) {
+            result = result.concat(this.northwest.getAllPoints());
+            result = result.concat(this.northeast.getAllPoints());
+            result = result.concat(this.southwest.getAllPoints());
+            result = result.concat(this.southeast.getAllPoints());
+        }
+        return result;
+    }
+
+    // Get the center of the quadrant containing a point
+    getQuadrantCenter(point) {
+        if (!this.boundary.contains(point)) {
+            return null;
+        }
+        
+        // If this node contains the point and isn't divided, return this quadrant's center
+        if (this.points.includes(point)) {
+            return { x: this.boundary.x, y: this.boundary.y };
+        }
+        
+        // Otherwise check children
+        if (this.divided) {
+            return this.northwest.getQuadrantCenter(point) ||
+                   this.northeast.getQuadrantCenter(point) ||
+                   this.southwest.getQuadrantCenter(point) ||
+                   this.southeast.getQuadrantCenter(point);
+        }
+        
+        return null;
     }
 }

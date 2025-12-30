@@ -1,79 +1,88 @@
 {
   "points": [
     {
+      "index": 0,
       "label": "Call me Jonah. My parents did, or nearly did.",
-      "x": 0.3951078951358795,
-      "y": 0.04740989953279495
+      "x": 0.47021374106407166,
+      "y": 0.40902113914489746
     },
     {
-      "label": "They called me John. Jonah \u2013 John - if I had been a Sam, I would have been a Jonah still, not because I have been unlucky for others, but because somebody or something has compelled me to be certain places at",
-      "x": 0.3988147974014282,
-      "y": 0.3858068287372589
+      "index": 1,
+      "label": "They called me John. Jonah \u2013 John - if I had been a Sam, I would have been a Jonah still, not because I have been unlucky for others, but because somebody or something has compelled me to be certain places at certain times, without fail.",
+      "x": 0.6619352698326111,
+      "y": 0.5415575504302979
     },
     {
-      "label": "certain times, without fail.",
-      "x": 0.4703470766544342,
-      "y": 0.7527102828025818
-    },
-    {
+      "index": 2,
       "label": "Conveyances and motives, both conventional and bizarre, have been provided.",
-      "x": 0.0,
-      "y": 0.7590534090995789
+      "x": 0.05182650685310364,
+      "y": 0.25103795528411865
     },
     {
+      "index": 3,
       "label": "And, according to plan, at each appointed second, at each appointed place this Jonah was there.",
-      "x": 0.2511783242225647,
-      "y": 0.3402858376502991
+      "x": 0.16907571256160736,
+      "y": 0.5006483793258667
     },
     {
-      "label": "When I was a younger man--two wives ago, 250,000 cigarettes ago, 3,000 quarts of booze ago.",
-      "x": 0.5847697257995605,
-      "y": 0.9778156280517578
-    },
-    {
-      "label": "When I was a much younger man, I began to collect material for a book to be called The Day the World Ended.",
-      "x": 0.3205548822879791,
-      "y": 1.0
-    },
-    {
-      "label": "The book was to be factual.",
-      "x": 0.004799749236553907,
-      "y": 0.39113759994506836
-    },
-    {
-      "label": "The book was to be an account of what important Americans had done on the day when the first atomic bomb was dropped on Hiroshima, Japan.",
-      "x": 0.17029713094234467,
-      "y": 0.6689791083335876
-    },
-    {
-      "label": "It was to be a Christian book. I was a Christian then.",
-      "x": 0.12252078205347061,
-      "y": 0.0566122941672802
-    },
-    {
-      "label": "I am a Bokononist now.",
-      "x": 0.7766933441162109,
-      "y": 0.5433734059333801
-    },
-    {
-      "label": "I would have been a Bokononist then, if there had been anyone to teach me the bittersweet lies of Bokonon.",
-      "x": 0.8682668805122375,
-      "y": 0.20150603353977203
-    },
-    {
-      "label": "But Bokononism was unknown beyond the gravel beaches and coral knives that ring this little island in the Caribbean Sea, the Republic of San Lorenzo.",
+      "index": 4,
+      "label": "When I was a younger man — two wives ago, 250,000 cigarettes ago, 3,000 quarts of booze ago.",
       "x": 1.0,
-      "y": 0.45734766125679016
+      "y": 0.4054054617881775
     },
     {
-      "label": "We Bokononists believe that humanity is organized into teams, teams that do God's Will without ever discovering what they are doing.",
-      "x": 0.7929832339286804,
+      "index": 5,
+      "label": "When I was a much younger man, I began to collect material for a book to be called The Day the World Ended.",
+      "x": 0.9219245314598083,
+      "y": 0.19081832468509674
+    },
+    {
+      "index": 6,
+      "label": "The book was to be factual.",
+      "x": 0.28319042921066284,
+      "y": 0.1263010948896408
+    },
+    {
+      "index": 7,
+      "label": "The book was to be an account of what important Americans had done on the day when the first atomic bomb was dropped on Hiroshima, Japan.",
+      "x": 0.6555622220039368,
+      "y": 0.18255013227462769
+    },
+    {
+      "index": 8,
+      "label": "It was to be a Christian book. I was a Christian then.",
+      "x": 0.5334169268608093,
       "y": 0.0
     },
     {
+      "index": 9,
+      "label": "I am a Bokononist now.",
+      "x": 0.2920266091823578,
+      "y": 0.7414122223854065
+    },
+    {
+      "index": 10,
+      "label": "I would have been a Bokononist then, if there had been anyone to teach me the bittersweet lies of Bokonon.",
+      "x": 0.7739180326461792,
+      "y": 0.8786003589630127
+    },
+    {
+      "index": 11,
+      "label": "But Bokononism was unknown beyond the gravel beaches and coral knives that ring this little island in the Caribbean Sea, the Republic of San Lorenzo.",
+      "x": 0.4865056276321411,
+      "y": 0.8753849864006042
+    },
+    {
+      "index": 12,
+      "label": "We Bokononists believe that humanity is organized into teams, teams that do God's Will without ever discovering what they are doing.",
+      "x": 0.0,
+      "y": 0.7741941809654236
+    },
+    {
+      "index": 13,
       "label": "Such a team is called a karass by Bokonon, and the instrument, the kan-kan, that brought me into my own particular karass was the book I never finished, the book to be called The Day the World Ended.",
-      "x": 0.6473520398139954,
-      "y": 0.20858363807201385
+      "x": 0.1279132068157196,
+      "y": 1.0
     }
   ]
 }

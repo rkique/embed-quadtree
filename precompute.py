@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 import umap
 
 MODEL_NAME = "all-MiniLM-L6-v2"
-RANDOM_SEED = 42
+RANDOM_SEED = 2
 
 def read_lines(path: Path) -> list[str]:
     return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -44,8 +44,8 @@ def main() -> None:
     coords = normalize(coords)
 
     points = [
-        {"label": line, "x": float(x), "y": float(y)}
-        for line, (x, y) in zip(lines, coords)
+        {"index": i, "label": line, "x": float(x), "y": float(y)}
+        for i, (line, (x, y)) in enumerate(zip(lines, coords))
     ]
 
     OUTPUT_PATH.write_text(json.dumps({"points": points}, indent=2), encoding="utf-8")
